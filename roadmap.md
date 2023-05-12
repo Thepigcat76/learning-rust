@@ -1,5 +1,5 @@
 - Getting Started:
-        Learn about the fundamental concepts of Rust, such as ownership, borrowing, and lifetimes.
+        Learn about the fundamental concepts of Rust, such as ownership       borrowing, and lifetimes.
         Install Rust and set up the development environment.
         Familiarize yourself with the Rust compiler, Cargo (the build system and package manager), and the Rust documentation.
 

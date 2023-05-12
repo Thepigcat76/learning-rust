@@ -1,4 +1,4 @@
-use ferris_says::say; // from the previous step
+/* use ferris_says::say; // from the previous step
 use std::io::{stdout, BufWriter};
 
 fn main() {
@@ -8,4 +8,8 @@ fn main() {
 
     let mut writer = BufWriter::new(stdout.lock());
     say(message.as_bytes(), width, &mut writer).unwrap();
+} */
+
+fn main() {
+    println!("uwu");
 }
