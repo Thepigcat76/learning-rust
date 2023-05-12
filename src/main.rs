@@ -1,4 +1,4 @@
-use std::io;
+/*use std::io;
 
 fn main() {
     println!("uwu");
@@ -27,4 +27,27 @@ fn main() {
         // Display the user's input
         println!("Hello, {}!", trimmed_input);
     }
+}*/
+
+use std::io;
+
+fn main() {
+    let question1 = "Are turtles reptiles?";
+    
+    println!("{}", question1);
+    
+    let trimmed_input = input.trim();
+
+    if trimmed_input == "yes" {
+        println!("Correct!");
+    } else {
+        // Display the user's input
+        println!("Wrong!");
+    }
+}
+
+fn scan() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input)
+        .expect("Failed to read line");
 }
