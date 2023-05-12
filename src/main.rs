@@ -1,7 +1,8 @@
 fn main() {
     println!("uwu");
-    let n = 0;
-    if n == 0 {
+    let mut n = 0;
+    n += 1;
+    if n >= 0 {
         println!("amogus")
     }
 }
