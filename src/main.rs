@@ -1,53 +1,51 @@
-/*use std::io;
+use std::io::{self, BufRead};
+
 
 fn main() {
-    println!("uwu");
-    let mut n = 0;
-    n += 1;
-    if n >= 0 {
-        println!("amogus")
-    }
-    // Create a new instance of `std::io::stdin`
-    let mut input = String::new();
-
-    // Prompt the user for input
-    println!("Please enter your name:");
-
-    // Read the user's input
-    io::stdin().read_line(&mut input)
-        .expect("Failed to read line");
-
-    // Display the user's input
-    let trimmed_input = input.trim();
-
-    // Check if the input matches "uwu"
-    if trimmed_input == "uwu" {
-        println!("You entered uwu!");
-    } else {
-        // Display the user's input
-        println!("Hello, {}!", trimmed_input);
-    }
-}*/
-
-use std::io;
-
-fn main() {
-    let question1 = "Are turtles reptiles?";
+    let questions: [&str; 3];
+    questions = ["Are turtles reptiles?", "Is Rust an awesome language?", "UwU?"];
+    let mut score = 0;
     
-    println!("{}", question1);
+    println!("{}", questions[0]);
+    if checkInput("Yes") == true {
+        score += 1;
+    }
     
-    let trimmed_input = input.trim();
+    
+    println!("{}", questions[1]);
+    if checkInput("Yes") == true {
+        score += 1;
+    }
+    
+    
+    println!("{}", questions[2]);
+    if checkInput("UwU!") == true {
+        score += 1;
+    }
 
-    if trimmed_input == "yes" {
+    println!("{}", score);
+}
+
+fn checkInput(solution: &str) -> bool {
+    #![allow(warnings)]
+    let input = scan().trim().to_owned();
+
+    if input == "Yes" {
         println!("Correct!");
+        return true;
     } else {
         // Display the user's input
         println!("Wrong!");
+        return false;
     }
+
 }
 
-fn scan() {
+fn scan() -> String {
     let mut input = String::new();
-    io::stdin().read_line(&mut input)
+    io::stdin()
+        .lock()
+        .read_line(&mut input)
         .expect("Failed to read line");
+    input
 }
