@@ -1,26 +1,21 @@
 use std::io::{self, BufRead};
-use std::process;
 use rand::Rng;
 
 fn main() {
-    #![allow(warnings)]
-    while true {
-        selection();
-    }
-}
-
-fn selection() {
-    println!("What would you like to do?");
-    println!("[Q]uiz? or [M]agic eight ball? or [E]nd?");
-    let input = scan();
-    if input == "Q" {
-        quiz();
-    } else if input == "M" {
-        println!("Your question:");
-        let question = &scan();
-        println!("{}", magic_eight_ball(question));
-    } else if input == "E" {
-        process::exit(0);
+    let mut running = true;
+    while running {
+        println!("What would you like to do?");
+        println!("[Q]uiz? or [M]agic eight ball? or [E]nd?");
+        let input = scan();
+        if input == "Q" {
+            quiz();
+        } else if input == "M" {
+            println!("Your question:");
+            let question = &scan();
+            println!("{}", magic_eight_ball(question));
+        } else if input == "E" {
+            running = false;
+        }
     }
 }
 
