@@ -1,15 +1,26 @@
 use std::io::{self, BufRead};
+use std::process;
 use rand::Rng;
 
 fn main() {
+    #![allow(warnings)]
+    while true {
+        selection();
+    }
+}
+
+fn selection() {
     println!("What would you like to do?");
-    println!("[Q]uiz? or [M]agic eight ball?");
+    println!("[Q]uiz? or [M]agic eight ball? or [E]nd?");
     let input = scan();
     if input == "Q" {
         quiz();
     } else if input == "M" {
-        let question = "Am I cool?";
+        println!("Your question:");
+        let question = &scan();
         println!("{}", magic_eight_ball(question));
+    } else if input == "E" {
+        process::exit(0);
     }
 }
 
@@ -50,8 +61,8 @@ fn quiz() {
 
 fn magic_eight_ball(question: &str) -> &str {
     let mut rng = rand::thread_rng();
-    let random_int = rng.gen_range(0..=1);
-    if random_int == 0 {
+    let random_int = rng.gen_range(0..=count_letters(question));
+    if random_int % 2 == 0 {
         return "Yes";
     } else {
         return "No";
