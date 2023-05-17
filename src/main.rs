@@ -5,7 +5,7 @@ fn main() {
     let mut running = true;
     while running {
         println!("What would you like to do?");
-        println!("[Q]uiz? or [M]agic eight ball? or [E]nd?");
+        println!("[Q]uiz? or [M]agic eight ball? or [C]alculator or [E]nd?");
         let input = scan();
         if input == "Q" {
             quiz();
@@ -13,9 +13,66 @@ fn main() {
             println!("Your question:");
             let question = &scan();
             println!("{}", magic_eight_ball(question));
+        } else if input == "C" {
+            calculator();
         } else if input == "E" {
             running = false;
         }
+        
+    }
+}
+
+fn calculator() {
+    println!("Enter the first number:");
+    let number_1: Result<i32, _> = scan().parse();
+    println!("Enter the second number:");
+    let number_2: Result<i32, _> = scan().parse();
+    println!("Enter the arithmetical operator");
+    let input = scan();
+    if input == "+" {
+        let result = match (number_1, number_2) {
+            (Ok(num1), Ok(num2)) => Ok(num1 + num2),
+            (Err(err1), Err(_err2)) => Err(err1), // Handle the error case if both numbers are Err
+            (Err(err), _) | (_, Err(err)) => Err(err), // Handle the error case if either number is Err
+        };
+    
+        match result {
+            Ok(res) => println!("{}", res),
+            Err(err) => println!("Error: {}", err),
+        };
+    } else if input == "-" {
+        let result = match (number_1, number_2) {
+            (Ok(num1), Ok(num2)) => Ok(num1 - num2),
+            (Err(err1), Err(_err2)) => Err(err1), // Handle the error case if both numbers are Err
+            (Err(err), _) | (_, Err(err)) => Err(err), // Handle the error case if either number is Err
+        };
+    
+        match result {
+            Ok(res) => println!("{}", res),
+            Err(err) => println!("Error: {}", err),
+        };
+    } else if input == "/" {
+        let result = match (number_1, number_2) {
+            (Ok(num1), Ok(num2)) => Ok(num1 / num2),
+            (Err(err1), Err(_err2)) => Err(err1), // Handle the error case if both numbers are Err
+            (Err(err), _) | (_, Err(err)) => Err(err), // Handle the error case if either number is Err
+        };
+    
+        match result {
+            Ok(res) => println!("{}", res),
+            Err(err) => println!("Error: {}", err),
+        };
+    } else if input == "*" {
+        let result = match (number_1, number_2) {
+            (Ok(num1), Ok(num2)) => Ok(num1 * num2),
+            (Err(err1), Err(_err2)) => Err(err1), // Handle the error case if both numbers are Err
+            (Err(err), _) | (_, Err(err)) => Err(err), // Handle the error case if either number is Err
+        };
+    
+        match result {
+            Ok(res) => println!("{}", res),
+            Err(err) => println!("Error: {}", err),
+        };
     }
 }
 

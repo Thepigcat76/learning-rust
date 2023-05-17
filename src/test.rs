@@ -1,0 +1,3 @@
+fn uwu() {
+    println!("uwu");
+}
