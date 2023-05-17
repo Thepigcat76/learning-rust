@@ -18,7 +18,6 @@ fn main() {
         } else if input == "E" {
             running = false;
         }
-        
     }
 }
 
